@@ -42,7 +42,7 @@ public class MainPageTest {
         String f_dateofbirthinput = "19 June,1970";
         String f_subjects = "arts";
         String up_file = "src/files_for_tests/panda.jpeg";
-        String adress = faker.address().fullAddress();
+        String address = faker.address().fullAddress();
 
         String state = "NCR";
         String city = "Delhi";
@@ -64,7 +64,7 @@ public class MainPageTest {
         mainPage.hobbies.click();
         mainPage.uploadpicture.uploadFile(new File(up_file));
 
-        mainPage.adress.setValue(adress);
+        mainPage.adress.setValue(address);
 
         mainPage.select_state.sendKeys("N");
         mainPage.select_state_sel.click();
@@ -82,7 +82,7 @@ public class MainPageTest {
                 Condition.text(f_phoneNumber),
                 Condition.text(f_dateofbirthinput),
                 Condition.text(f_subjects),
-                Condition.text(adress),
+                Condition.text(address),
                 Condition.text(state),
                 Condition.text(city)
         );
