@@ -44,11 +44,8 @@ public class MainPageTest {
         String up_file = "src/files_for_tests/panda.jpeg";
         String adress = faker.address().fullAddress();
 
-
-
         String state = "NCR";
         String city = "Delhi";
-
 
         mainPage.firstname.sendKeys(f_name);
         mainPage.lastname.sendKeys(f_lastname);
