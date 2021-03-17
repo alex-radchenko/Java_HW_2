@@ -23,11 +23,11 @@ targetCompatibility = 1.8
 
 dependencies {
     testImplementation('com.codeborne:selenide:5.19.0')
-    testImplementation('io.qameta.allure:allure-selenide:${allureVersion}')
+    testImplementation("io.qameta.allure:allure-selenide:${allureVersion}")
     testImplementation('org.slf4j:slf4j-simple:1.7.30')
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:${junitVersion}')
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation('com.github.javafaker:javafaker:1.0.2')
 }
 
@@ -36,9 +36,9 @@ test {
 }
 allure {
     autoconfigure = true
-    version = '${allureVersion}'
+    version = "${allureVersion}"
 
     useJUnit5 {
-        version = '${allureVersion}'
+        version = "${allureVersion}"
     }
 }
