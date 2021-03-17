@@ -3,7 +3,7 @@ plugins {
     id 'io.qameta.allure' version '2.8.1'
 }
 
-group 'com.example'
+group 'guru.qa'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -25,7 +25,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-    implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation('com.github.javafaker:javafaker:1.0.2')
 }
 
 test {

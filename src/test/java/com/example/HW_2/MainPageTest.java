@@ -30,7 +30,6 @@ public class MainPageTest {
         Configuration.startMaximized = true;
         open("https://demoqa.com/automation-practice-form");
     }
-
     @Test
     public void form() {
         Faker faker = new Faker();
@@ -41,7 +40,7 @@ public class MainPageTest {
         String f_phoneNumber = faker.phoneNumber().subscriberNumber(10);
         String f_dateofbirthinput = "19 June,1970";
         String f_subjects = "arts";
-        String up_file = "src/files_for_tests/panda.jpeg";
+        String up_file = "panda.jpeg";
         String address = faker.address().fullAddress();
 
         String state = "NCR";
@@ -62,7 +61,7 @@ public class MainPageTest {
         mainPage.subjects_on_p.sendKeys(f_subjects);
         mainPage.subjects_on_p.sendKeys(Keys.TAB);
         mainPage.hobbies.click();
-        mainPage.uploadpicture.uploadFile(new File(up_file));
+        mainPage.uploadpicture.uploadFromClasspath(up_file);
 
         mainPage.adress.setValue(address);
 
@@ -84,7 +83,8 @@ public class MainPageTest {
                 Condition.text(f_subjects),
                 Condition.text(address),
                 Condition.text(state),
-                Condition.text(city)
+                Condition.text(city),
+                Condition.text(up_file)
         );
 
     }
