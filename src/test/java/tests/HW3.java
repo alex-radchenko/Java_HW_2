@@ -49,7 +49,7 @@ public class HW3 {
     @Test
     void DragDropActionClickMove(){
         open("https://the-internet.herokuapp.com/drag_and_drop");
-        Selenide.actions().clickAndHold($("#column-a")).moveToElement(Selenide.$("#column-b")).perform();
+        Selenide.actions().clickAndHold($("#column-a")).moveToElement(Selenide.$("#column-b")).release().perform();
         $("#column-a").shouldHave(Condition.text("B"));
         $("#column-b").shouldHave(Condition.text("A"));
     }
