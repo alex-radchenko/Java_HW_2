@@ -2,29 +2,25 @@ package tests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.github.javafaker.Faker;
+import pages.InputFields;
+import io.qameta.allure.Step;
+
 
 import static com.codeborne.selenide.Selenide.open;
 
 public class MainPageTest {
-    private final MainPage mainPage = new MainPage();
+    InputFields steps = new InputFields();
 
-    @BeforeEach
-    public void setUp() {
-        Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.browser = "chrome";
-
-        Configuration.startMaximized = true;
-        open("https://demoqa.com/automation-practice-form");
-    }
     @Test
-    public void form() {
+    void form() {
         Faker faker = new Faker();
-        String fakeName = faker.name().firstName();
-        String fakelastName = faker.name().lastName();
-        String sex = "Male";
+        String fakeFirstName = faker.name().firstName();
+        String fakeLastName = faker.name().lastName();
+        String gender = "Male";
         String fakeUserEmail = faker.internet().emailAddress();
         String fakePhoneNumber = faker.phoneNumber().subscriberNumber(10);
         String fakeDateOfBirthInput = "19 June,1970";
@@ -35,45 +31,46 @@ public class MainPageTest {
         String state = "NCR";
         String city = "Delhi";
 
-        mainPage.firstNname.val(fakeName);
-        mainPage.lastName.val(fakelastName);
-        mainPage.usereMail.val(fakeUserEmail);
-        mainPage.gender.click();
-        mainPage.userNumber.val(fakePhoneNumber);
+        steps.openForm()
+                .fillFirstName(fakeFirstName)
+                .fillLastName(fakeLastName)
+                .fillEmail(fakeUserEmail)
+                .clickRadioButtonGender(gender)
+                .fillPhoneNumber(fakePhoneNumber);
 
-        mainPage.dateOfBirthInput.click();
-        mainPage.monthSelect.selectOption("June");
-        mainPage.yearSelect.selectOption("1970");
-        mainPage.dayOfBirth.click();
-
-        mainPage.subjects_con.click();
-        mainPage.subjects_on_p.val(fakeSubjects);
-        mainPage.subjects_on_p.pressEnter();
-        mainPage.hobbies.click();
-        mainPage.uploadPicture.uploadFromClasspath(pathUploadFile);
-
-        mainPage.address.setValue(address);
-
-        mainPage.selectState.val("N").pressEnter();
-
-        mainPage.selectCity.val("D").pressEnter();
-
-        mainPage.submitButton.click();
-
-        mainPage.modalContent.shouldHave(Condition.text(fakeDateOfBirthInput),
-                Condition.text(fakeName),
-                Condition.text(fakelastName),
-                Condition.text(fakeUserEmail),
-                Condition.text(sex),
-                Condition.text(fakePhoneNumber),
-                Condition.text(fakeDateOfBirthInput),
-                Condition.text(fakeSubjects),
-                Condition.text(address),
-                Condition.text(state),
-                Condition.text(city),
-                Condition.text(pathUploadFile)
-        );
-
+        Selenide.sleep(3000);
     }
-
 }
+//        mainPage.userNumber.val(fakePhoneNumber);
+//
+//        mainPage.dateOfBirthInput.click();
+//        mainPage.monthSelect.selectOption("June");
+//        mainPage.yearSelect.selectOption("1970");
+//        mainPage.dayOfBirth.click();
+//
+//        mainPage.subjects.click();
+//        mainPage.subjectSelect.val(fakeSubjects).pressEnter();;
+//        mainPage.hobbies.click();
+//        mainPage.uploadPicture.uploadFromClasspath(pathUploadFile);
+//
+//        mainPage.address.setValue(address);
+//
+//        mainPage.selectState.val("N").pressEnter();
+//
+//        mainPage.selectCity.val("D").pressEnter();
+//
+//        mainPage.submitButton.click();
+//
+//        mainPage.modalContent.shouldHave(Condition.text(fakeDateOfBirthInput),
+//                Condition.text(fakeName),
+//                Condition.text(fakelastName),
+//                Condition.text(fakeUserEmail),
+//                Condition.text(sex),
+//                Condition.text(fakePhoneNumber),
+//                Condition.text(fakeDateOfBirthInput),
+//                Condition.text(fakeSubjects),
+//                Condition.text(address),
+//                Condition.text(state),
+//                Condition.text(city),
+//                Condition.text(pathUploadFile)
+//        );
