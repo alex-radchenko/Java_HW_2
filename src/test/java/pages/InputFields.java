@@ -113,9 +113,8 @@ public class InputFields {
     }
 
     @Step("Press submit button")
-    public InputFields submitButton() {
+    public void submitButton() {
         submitButton.click();
-        return this;
     }
 
     @Step("Check test")

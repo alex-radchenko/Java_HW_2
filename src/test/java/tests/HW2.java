@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import com.github.javafaker.Faker;
 import pages.InputFields;
 
-public class MainPageTest {
+public class HW2 {
     InputFields steps = new InputFields();
 
     @Test
