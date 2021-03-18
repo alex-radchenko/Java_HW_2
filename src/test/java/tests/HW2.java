@@ -51,6 +51,3 @@ public class HW2 {
                 .checkInModalContent(pathUploadFile);
     }
 }
-
-
-
