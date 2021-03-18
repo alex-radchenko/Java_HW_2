@@ -71,7 +71,6 @@ public class HW3 {
 
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
-        Selenide.sleep(3333);
     }
 
 
