@@ -1,7 +1,6 @@
 package pages;
-
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import io.qameta.allure.Step;
@@ -11,7 +10,6 @@ public class InputFields {
             firstName = $("#firstName"),
             lastName = $("#lastName"),
             userEmail = $("#userEmail"),
-//            gender = $(byText("Male")),
             userNumber = $("#userNumber"),
             dateOfBirthInput = $("#dateOfBirthInput"),
             monthSelect = $(".react-datepicker__month-select"),
@@ -67,4 +65,63 @@ public class InputFields {
         userNumber.val(PhoneNumberValue);
         return this;
     }
+
+    @Step("Fill date of birthInput ")
+    public InputFields fillDateOfBirthInput() {
+        dateOfBirthInput.click();
+        monthSelect.selectOption("June");
+        yearSelect.selectOption("1970");
+        dayOfBirth.click();
+        return this;
+    }
+
+    @Step("Fill subjects ")
+    public InputFields fillSubjects(String fakeSubjects) {
+        subjects.click();
+        subjectSelect.val(fakeSubjects).pressEnter();
+        return this;
+    }
+    
+    @Step("Fill hobbies")
+    public InputFields fillHobbies() {
+        hobbies.click();
+        return this;
+    }
+
+    @Step("Upload picture")
+    public InputFields uploadPicture(String pathToFile) {
+        uploadPicture.uploadFromClasspath(pathToFile);
+        return this;
+    }
+
+    @Step("Fill address")
+    public InputFields fillAddress(String add_address) {
+        address.setValue(add_address);
+        return this;
+    }
+
+    @Step("Select state")
+    public InputFields selectState() {
+        selectState.val("N").pressEnter();
+        return this;
+    }
+
+    @Step("Select city")
+    public InputFields selectCity() {
+        selectCity.val("D").pressEnter();
+        return this;
+    }
+
+    @Step("Press submit button")
+    public InputFields submitButton() {
+        submitButton.click();
+        return this;
+    }
+
+    @Step("Check test")
+    public InputFields checkInModalContent(String textForCheck) {
+        modalContent.shouldHave(Condition.text(textForCheck));
+        return this;
+    }
+
 }

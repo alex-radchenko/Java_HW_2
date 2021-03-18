@@ -1,16 +1,7 @@
 package tests;
-
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.github.javafaker.Faker;
 import pages.InputFields;
-import io.qameta.allure.Step;
-
-
-import static com.codeborne.selenide.Selenide.open;
 
 public class MainPageTest {
     InputFields steps = new InputFields();
@@ -26,7 +17,7 @@ public class MainPageTest {
         String fakeDateOfBirthInput = "19 June,1970";
         String fakeSubjects = "arts";
         String pathUploadFile = "panda.jpeg";
-        String address = faker.address().fullAddress();
+        String fakeAddress = faker.address().fullAddress();
 
         String state = "NCR";
         String city = "Delhi";
@@ -36,41 +27,30 @@ public class MainPageTest {
                 .fillLastName(fakeLastName)
                 .fillEmail(fakeUserEmail)
                 .clickRadioButtonGender(gender)
-                .fillPhoneNumber(fakePhoneNumber);
+                .fillPhoneNumber(fakePhoneNumber)
+                .fillDateOfBirthInput()
+                .fillSubjects(fakeSubjects)
+                .fillHobbies()
+                .uploadPicture(pathUploadFile)
+                .fillAddress(fakeAddress)
+                .selectState()
+                .selectCity()
+                .submitButton();
 
-        Selenide.sleep(3000);
+        steps.checkInModalContent(fakeDateOfBirthInput)
+                .checkInModalContent(fakeFirstName)
+                .checkInModalContent(fakeLastName)
+                .checkInModalContent(fakeUserEmail)
+                .checkInModalContent(gender)
+                .checkInModalContent(fakePhoneNumber)
+                .checkInModalContent(fakeDateOfBirthInput)
+                .checkInModalContent(fakeSubjects)
+                .checkInModalContent(fakeAddress)
+                .checkInModalContent(state)
+                .checkInModalContent(city)
+                .checkInModalContent(pathUploadFile);
     }
 }
-//        mainPage.userNumber.val(fakePhoneNumber);
-//
-//        mainPage.dateOfBirthInput.click();
-//        mainPage.monthSelect.selectOption("June");
-//        mainPage.yearSelect.selectOption("1970");
-//        mainPage.dayOfBirth.click();
-//
-//        mainPage.subjects.click();
-//        mainPage.subjectSelect.val(fakeSubjects).pressEnter();;
-//        mainPage.hobbies.click();
-//        mainPage.uploadPicture.uploadFromClasspath(pathUploadFile);
-//
-//        mainPage.address.setValue(address);
-//
-//        mainPage.selectState.val("N").pressEnter();
-//
-//        mainPage.selectCity.val("D").pressEnter();
-//
-//        mainPage.submitButton.click();
-//
-//        mainPage.modalContent.shouldHave(Condition.text(fakeDateOfBirthInput),
-//                Condition.text(fakeName),
-//                Condition.text(fakelastName),
-//                Condition.text(fakeUserEmail),
-//                Condition.text(sex),
-//                Condition.text(fakePhoneNumber),
-//                Condition.text(fakeDateOfBirthInput),
-//                Condition.text(fakeSubjects),
-//                Condition.text(address),
-//                Condition.text(state),
-//                Condition.text(city),
-//                Condition.text(pathUploadFile)
-//        );
+
+
+
