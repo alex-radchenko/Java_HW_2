@@ -45,6 +45,15 @@ public class HW3 {
         $("#column-b").shouldHave(Condition.text("A"));
     }
 
+    //don't work on mac
+    @Test
+    void DragDropActionClickMove(){
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+        Selenide.actions().clickAndHold($("#column-a")).moveToElement(Selenide.$("#column-b")).perform();
+        $("#column-a").shouldHave(Condition.text("B"));
+        $("#column-b").shouldHave(Condition.text("A"));
+    }
+
     @Test
     void dragAndDropTestJS() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
