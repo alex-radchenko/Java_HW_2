@@ -1,13 +1,13 @@
 package tests;
 import org.junit.jupiter.api.Test;
 import com.github.javafaker.Faker;
-import pages.InputFields;
+import pages.RegistationFormPage;
 
-public class HW2 {
-    InputFields steps = new InputFields();
+public class RegistationFormTests {
+    RegistationFormPage steps = new RegistationFormPage();
 
     @Test
-    void form() {
+    void registationFormTest() {
         Faker faker = new Faker();
         String fakeFirstName = faker.name().firstName();
         String fakeLastName = faker.name().lastName();

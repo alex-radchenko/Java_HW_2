@@ -1,11 +1,12 @@
 package pages;
 import com.codeborne.selenide.Condition;
+import static com.codeborne.selenide.Condition.text;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import io.qameta.allure.Step;
 
-public class InputFields {
+public class RegistationFormPage {
     SelenideElement
             firstName = $("#firstName"),
             lastName = $("#lastName"),
@@ -31,43 +32,43 @@ public class InputFields {
 
 
     @Step("Open form")
-    public InputFields openForm() {
+    public RegistationFormPage openForm() {
         open("https://demoqa.com/automation-practice-form");
         return this;
     }
 
     @Step("Fill first name")
-    public InputFields fillFirstName(String firstNameValue) {
+    public RegistationFormPage fillFirstName(String firstNameValue) {
         firstName.val(firstNameValue);
         return this;
     }
 
     @Step("Fill last name")
-    public InputFields fillLastName(String LastNameValue) {
+    public RegistationFormPage fillLastName(String LastNameValue) {
         lastName.val(LastNameValue);
         return this;
     }
 
     @Step("Fill email")
-    public InputFields fillEmail(String EmailValue) {
+    public RegistationFormPage fillEmail(String EmailValue) {
         userEmail.val(EmailValue);
         return this;
     }
 
     @Step("Select '{gender}' gender")
-    public InputFields clickRadioButtonGender(String gender) {
+    public RegistationFormPage clickRadioButtonGender(String gender) {
         getElementByText(gender).click();
         return this;
     }
 
     @Step("Fill phone number")
-    public InputFields fillPhoneNumber(String PhoneNumberValue) {
+    public RegistationFormPage fillPhoneNumber(String PhoneNumberValue) {
         userNumber.val(PhoneNumberValue);
         return this;
     }
 
     @Step("Fill date of birthInput ")
-    public InputFields fillDateOfBirthInput() {
+    public RegistationFormPage fillDateOfBirthInput() {
         dateOfBirthInput.click();
         monthSelect.selectOption("June");
         yearSelect.selectOption("1970");
@@ -76,38 +77,38 @@ public class InputFields {
     }
 
     @Step("Fill subjects ")
-    public InputFields fillSubjects(String fakeSubjects) {
+    public RegistationFormPage fillSubjects(String fakeSubjects) {
         subjects.click();
         subjectSelect.val(fakeSubjects).pressEnter();
         return this;
     }
     
     @Step("Fill hobbies")
-    public InputFields fillHobbies() {
+    public RegistationFormPage fillHobbies() {
         hobbies.click();
         return this;
     }
 
     @Step("Upload picture")
-    public InputFields uploadPicture(String pathToFile) {
+    public RegistationFormPage uploadPicture(String pathToFile) {
         uploadPicture.uploadFromClasspath(pathToFile);
         return this;
     }
 
     @Step("Fill address")
-    public InputFields fillAddress(String add_address) {
+    public RegistationFormPage fillAddress(String add_address) {
         address.setValue(add_address);
         return this;
     }
 
     @Step("Select state")
-    public InputFields selectState() {
+    public RegistationFormPage selectState() {
         selectState.val("N").pressEnter();
         return this;
     }
 
     @Step("Select city")
-    public InputFields selectCity() {
+    public RegistationFormPage selectCity() {
         selectCity.val("D").pressEnter();
         return this;
     }
@@ -118,8 +119,8 @@ public class InputFields {
     }
 
     @Step("Check test")
-    public InputFields checkInModalContent(String textForCheck) {
-        modalContent.shouldHave(Condition.text(textForCheck));
+    public RegistationFormPage checkInModalContent(String textForCheck) {
+        modalContent.shouldHave(text(textForCheck));
         return this;
     }
 
